@@ -59,7 +59,7 @@ function handleTweetBtnClick(){
 
     if(tweetInput.value){
         tweetsData.unshift({
-            handle: `@Scrimba`,
+            handle: `@wazalei`,
             profilePic: `images/scrimbalogo.png`,
             likes: 0,
             retweets: 0,
@@ -97,7 +97,8 @@ function getFeedHtml(){
         }
         
         let repliesHtml = ''
-        
+        let commentReplyHtml = ''
+
         if(tweet.replies.length > 0){
             tweet.replies.forEach(function(reply){
                 repliesHtml+=`
@@ -113,11 +114,18 @@ function getFeedHtml(){
                                 </div>
                             </div>
                         </div>
-                        <div class="comment-inner" id="comment-inner">
+
+                    </div>
+                `
+            })
+        }else{
+            tweet.replies.forEach((reply)=>{
+                repliesHtml+=`
+                        <div class="comment-inner hidden" id="comment-inner">
                             <i class="fa-solid fa-reply"></i>
                             <textarea class="comment-input" placeholder="What do you think?" id="comment-input"></textarea>
                         </div>
-                    </div>
+                
                 `
             })
         }
